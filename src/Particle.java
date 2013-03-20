@@ -10,18 +10,18 @@ public class Particle
 	private double speed;
 	private double angle;
 
-	private float red;
-	private float green;
-	private float blue;
+//	private float red;
+//	private float green;
+//	private float blue;
 	public float alpha;
 	public Particle()
 	{
 		speed = Math.random() * 20.0;
 		angle = Math.random() * 60 + 60.0;
 		
-		red = (float)Math.random();
-		green = (float)Math.random();
-		blue = (float)Math.random();
+//		red = (float)Math.random();
+//		green = (float)Math.random();
+//		blue = (float)Math.random();
 		
 		alpha = 1.0f;
 	}
@@ -34,20 +34,17 @@ public class Particle
 		speed = (Math.random() * (max - min) + min)* 20.0;
 		angle = (Math.random() * (max - min) + min)* 60 + 60.0;
 		
-		red = (float)Math.random();
-		green = (float)Math.random();
-		blue = (float)Math.random();
+//		red = (float)Math.random();
+//		green = (float)Math.random();
+//		blue = (float)Math.random();
 		
 		alpha = 1.0f;
 	}
 
 	public void update()
 	{
-//		x-=1;
-//		y+=1;
-		
-		if(x<=10)x += (speed * Math.cos((Math.PI/180)*angle))/10;
-		else x -= (speed * Math.cos((Math.PI/180)*angle))/10;
+		if(x<=10)x -= (speed * Math.cos((Math.PI/180)*angle))/45;
+		else x += (speed * Math.cos((Math.PI/180)*angle))/15;
 		if(y<=2)y += (speed * Math.sin((Math.PI/180)*angle))/20;
 		else y -= (speed * Math.sin((Math.PI/180)*angle))/20;
 		t += 0.05;
@@ -59,8 +56,9 @@ public class Particle
 	public void draw(Graphics g)
 	{
 		Graphics2D g2 = (Graphics2D)g;
-		Ellipse2D.Double ellipse = new Ellipse2D.Double(x,y,20,20);
-		g2.setColor(new Color(red,green,blue,alpha));
+		Ellipse2D.Double ellipse = new Ellipse2D.Double(x,y,40,40);
+		g2.setColor(new Color((float)1.0, (float)1.0, (float)1.0, alpha));
+//		g2.setColor(new Color((red, green, blue, alpha));
 		g2.fill(ellipse);
 		
 	}

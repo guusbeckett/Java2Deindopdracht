@@ -117,15 +117,8 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+		@SuppressWarnings("unused")
 		Graphics2D g2 = (Graphics2D)g;
-				
-		// 0-punt verlegging
-		//g2.translate(0,getHeight());
-		//g2.scale(1,-1);
-		
-		// Center screen
-		//g2.translate(getWidth()/2, getHeight()/2);
-		//g2.scale(1, 1);
 		
 		for(Particle k : particles)
 		{
@@ -142,13 +135,11 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
