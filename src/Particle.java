@@ -39,14 +39,15 @@ public class Particle
 		blue = (float)Math.random();
 		
 		alpha = 1.0f;
-		
 	}
 
 	public void update()
 	{
 //		x-=1;
 //		y+=1;
-		//x += (speed * Math.cos((Math.PI/180)*angle) * t)/10;
+		
+		if(x<=10)x += (speed * Math.cos((Math.PI/180)*angle))/10;
+		else x -= (speed * Math.cos((Math.PI/180)*angle))/10;
 		if(y<=2)y += (speed * Math.sin((Math.PI/180)*angle))/20;
 		else y -= (speed * Math.sin((Math.PI/180)*angle))/20;
 		t += 0.05;

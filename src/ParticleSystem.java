@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -46,6 +47,7 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 	/* Constructor */
 	public ParticleSystemPanel()
 	{
+		setBackground(Color.black);
 		setPreferredSize( new Dimension(640,480));
 		for(int idx = 0; idx < 2; idx++)
 		{
