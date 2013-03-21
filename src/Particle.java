@@ -14,6 +14,8 @@ public class Particle
 //	private float green;
 //	private float blue;
 	public float alpha;
+	
+	
 	public Particle()
 	{
 		speed = Math.random() * 20.0;
@@ -33,24 +35,23 @@ public class Particle
 		int max = 1;
 		speed = (Math.random() * (max - min) + min)* 20.0;
 		angle = (Math.random() * (max - min) + min)* 60 + 60.0;
-		
 //		red = (float)Math.random();
 //		green = (float)Math.random();
 //		blue = (float)Math.random();
-		
 		alpha = 1.0f;
 	}
 
 	public void update()
 	{
-		if(x<=10)x -= (speed * Math.cos((Math.PI/180)*angle))/45;
-		else x += (speed * Math.cos((Math.PI/180)*angle))/15;
-		if(y<=2)y += (speed * Math.sin((Math.PI/180)*angle))/20;
-		else y -= (speed * Math.sin((Math.PI/180)*angle))/20;
+		if(x<=10)x -= (speed * Math.cos((Math.PI/180)*angle))/55;
+		else x += (speed * Math.cos((Math.PI/180)*angle))/20;
+		if(y<=2)y += (speed * Math.sin((Math.PI/180)*angle))/27;
+		else y -= (speed * Math.sin((Math.PI/180)*angle))/27;
 		t += 0.05;
 		alpha -= 0.02f;
 		alpha = Math.max(0,alpha);
 	}
+	
 
 	
 	public void draw(Graphics g)
