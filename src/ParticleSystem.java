@@ -41,7 +41,7 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 	private ArrayList<Particle> particles = new ArrayList<Particle>();
 	private boolean drukMuis = false; 
 	private int particleCount;
-	private javax.swing.JDialog error;
+//	private javax.swing.JDialog error;
 	private FPScounter fpsCounter;
 	
 
@@ -120,6 +120,7 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 		super.paintComponent(g);
 		g.setColor(Color.green);
 		g.drawString(fpsCounter.tellFPS(), 1, 10);
+		g.drawString("Het aantal paricles is: "+particleCount,1, 30);
 		for(Particle k : particles)
 		{
 			k.draw(g);
@@ -129,8 +130,7 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		
-		if(arg0.getButton() == 1)JOptionPane.showMessageDialog(error, "Het aantal paricles is: "+particleCount +"Het aantal FPS is:" + fpsCounter.getFPS(), "Hoeveel particles zijn er?", JOptionPane.QUESTION_MESSAGE);;
+//		if(arg0.getButton() == 1)JOptionPane.showMessageDialog(error, "Het aantal paricles is: "+particleCount ,"Hoeveel particles zijn er?", JOptionPane.QUESTION_MESSAGE);;
 	}
 
 	@Override
