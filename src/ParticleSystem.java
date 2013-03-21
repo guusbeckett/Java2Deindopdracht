@@ -35,14 +35,11 @@ public class ParticleSystem {
 
 class ParticleSystemPanel extends JPanel implements ActionListener, MouseListener, MouseMotionListener {
 	
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8271945508104460591L;
 	private int x=0,y=0;
 	private ArrayList<Particle> particles = new ArrayList<Particle>();
 	private boolean drukMuis = false; 
+	private int particleCount;
 	
 	/* Constructor */
 	public ParticleSystemPanel()
@@ -63,8 +60,10 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 		{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(drukMuis)particles.add(new Particle(x,y));
-				if(drukMuis)particles.add(new Particle(x,y));
+				if(drukMuis) {					 
+				particles.add(new Particle(x,y));
+				particles.add(new Particle(x,y));
+				particleCount+=2;}
 				}
 		}).start();
 	}
@@ -77,9 +76,10 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 		{
 			Particle k = itr.next();
 
-			if(k.y < -2000.0)
+			if(particleCount > 150)
 			{
 				itr.remove();
+				particleCount-=1;
 			}
 			else
 			{
@@ -131,6 +131,7 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 //		int x = arg0.getX();
 //		int y = arg0.getY();
 //		kogels.add(new Kogel(x,y));
+		if(arg0.getButton() == 1)System.out.println("Het aantal paricles is: "+particleCount);
 	}
 
 	@Override

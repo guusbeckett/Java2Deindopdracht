@@ -52,6 +52,13 @@ public class Particle
 		alpha = Math.max(0,alpha);
 	}
 	
+	public double zichtbaarheid()
+	{
+		
+		double zbh = t;
+		return zbh ;
+		
+	}
 	
 	public void draw(Graphics g)
 	{
@@ -62,4 +69,6 @@ public class Particle
 		g2.fill(ellipse);
 		
 	}
+	
+	
 }
