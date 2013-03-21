@@ -48,17 +48,10 @@ public class Particle
 		if(y<=2)y += (speed * Math.sin((Math.PI/180)*angle))/20;
 		else y -= (speed * Math.sin((Math.PI/180)*angle))/20;
 		t += 0.05;
-		alpha -= 0.04f;
+		alpha -= 0.02f;
 		alpha = Math.max(0,alpha);
 	}
-	
-	public double zichtbaarheid()
-	{
-		
-		double zbh = t;
-		return zbh ;
-		
-	}
+
 	
 	public void draw(Graphics g)
 	{

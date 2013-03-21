@@ -46,16 +46,12 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 	{
 		setBackground(Color.black);
 		setPreferredSize( new Dimension(640,480));
-		for(int idx = 0; idx < 2; idx++)
-		{
-			particles.add(new Particle());
-		}
 		
 		Timer timer = new Timer(1000/30, this);
 		timer.start();
 		addMouseListener(this);
 		addMouseMotionListener(this);
-		
+
 		new Timer(1000/200, new ActionListener()
 		{
 			@Override
@@ -68,15 +64,13 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 		}).start();
 	}
 
-	// Timer, action performed. Update hier objects en/of world
-	// en dan issue een repaint()
 	public void actionPerformed(ActionEvent arg0)
 	{
 		for( Iterator<Particle> itr = particles.iterator(); itr.hasNext(); )
 		{
 			Particle k = itr.next();
 
-			if(particleCount > 150)
+			if(particleCount > 300)
 			{
 				itr.remove();
 				particleCount-=1;
@@ -86,16 +80,8 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 				k.update();
 			}
 		}
-		
-//		if( kogels.size() < 500)
-//		{
-//			kogels.add(new Kogel());
-//		}
-		
 		repaint();
 	}
-
-	 
 	
 	public int muisX()
 	{
@@ -113,13 +99,11 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 		return muisY;
 	}
 	
-	// Hier alleen tekenen ! Nooit een repaint() !!
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
 		@SuppressWarnings("unused")
-		Graphics2D g2 = (Graphics2D)g;
-		
+		Graphics2D g2 = (Graphics2D)g;		
 		for(Particle k : particles)
 		{
 			k.draw(g);
@@ -128,20 +112,15 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-//		int x = arg0.getX();
-//		int y = arg0.getY();
-//		kogels.add(new Kogel(x,y));
 		if(arg0.getButton() == 1)System.out.println("Het aantal paricles is: "+particleCount);
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		
 	}
 
 	@Override
@@ -161,15 +140,10 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 	public void mouseDragged(MouseEvent arg0) {
 		 x = arg0.getX();
 		 y = arg0.getY();
-//		kogels.add(new Kogel(x,y));
-//		kogels.add(new Kogel(x,y));
-//		kogels.add(new Kogel(x,y));
-//		kogels.add(new Kogel(x,y));
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
-//		System.out.println("Muis is op, X: "+x+" Y: "+y);
 		
 	}
 }
