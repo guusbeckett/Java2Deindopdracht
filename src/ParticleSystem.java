@@ -11,6 +11,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -38,7 +40,7 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 	
 	private static final long serialVersionUID = -8271945508104460591L;
 	private int x=0,y=0;
-	private ArrayList<Particle> particles = new ArrayList<Particle>();
+	private List<Particle> particles = new ArrayList<Particle>();
 	private boolean drukMuis = false; 
 	private int particleCount;
 //	private javax.swing.JDialog error;
