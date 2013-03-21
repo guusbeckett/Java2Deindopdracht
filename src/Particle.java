@@ -9,6 +9,8 @@ public class Particle
 	private double t = 0;
 	private double speed;
 	private double angle;
+	private double xR;
+	private double yR;
 
 //	private float red;
 //	private float green;
@@ -31,10 +33,13 @@ public class Particle
 	public Particle(int x2, int y2) {
 		this.x = x2;
 		this.y = y2;
-		int min = 4;
-		int max = 1;
+		int min = 1;
+		int max = 4;
 		speed = (Math.random() * (max - min) + min)* 20.0;
 		angle = (Math.random() * (max - min) + min)* 60 + 60.0;
+		//Gives a direction to the particle
+		xR = (Math.random() * (max - min) + min);
+		yR = (Math.random() * (max - min) + min);
 //		red = (float)Math.random();
 //		green = (float)Math.random();
 //		blue = (float)Math.random();
@@ -43,12 +48,13 @@ public class Particle
 
 	public void update()
 	{
-		if(x<=10)x -= (speed * Math.cos((Math.PI/180)*angle))/55;
+		//direction depends on the random number generator
+		if(xR<=2)x -= (speed * Math.cos((Math.PI/180)*angle))/55;
 		else x += (speed * Math.cos((Math.PI/180)*angle))/20;
-		if(y<=2)y += (speed * Math.sin((Math.PI/180)*angle))/27;
+		if(yR<=2)y += (speed * Math.sin((Math.PI/180)*angle))/27;
 		else y -= (speed * Math.sin((Math.PI/180)*angle))/27;
 		t += 0.05;
-		alpha -= 0.02f;
+		alpha -= 0.01f;
 		alpha = Math.max(0,alpha);
 	}
 	

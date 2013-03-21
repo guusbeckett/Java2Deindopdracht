@@ -11,11 +11,9 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -88,7 +86,7 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 		{
 			Particle k = itr.next();
 
-			if(particleCount > 350)
+			if(particleCount > 748)
 			{
 				itr.remove();
 				particleCount-=1;
