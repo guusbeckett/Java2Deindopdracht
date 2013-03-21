@@ -12,9 +12,12 @@ public class Particle
 	private double xR;
 	private double yR;
 
-//	private float red;
-//	private float green;
-//	private float blue;
+	@SuppressWarnings("unused")
+	private float red;
+	@SuppressWarnings("unused")
+	private float green;
+	@SuppressWarnings("unused")
+	private float blue;
 	public float alpha;
 	
 	
@@ -23,9 +26,9 @@ public class Particle
 		speed = Math.random() * 20.0;
 		angle = Math.random() * 60 + 60.0;
 		
-//		red = (float)Math.random();
-//		green = (float)Math.random();
-//		blue = (float)Math.random();
+		red = (float)Math.random();
+		green = (float)Math.random();
+		blue = (float)Math.random();
 		
 		alpha = 1.0f;
 	}
@@ -35,16 +38,22 @@ public class Particle
 		this.y = y2;
 		int min = 1;
 		int max = 4;
+		//Gives random speed to the particle
 		speed = (Math.random() * (max - min) + min)* 20.0;
 		angle = (Math.random() * (max - min) + min)* 60 + 60.0;
-		//Gives a direction to the particle
+		//Gives a random direction to the particle
 		xR = (Math.random() * (max - min) + min);
 		yR = (Math.random() * (max - min) + min);
-//		red = (float)Math.random();
-//		green = (float)Math.random();
-//		blue = (float)Math.random();
+//		if(colour) red=(float)Math.random();
+		red=1;
+//		if(colour)green=(float)Math.random();
+		green=1;
+//		if(colour)blue=(float)Math.random();
+		blue=1;
 		alpha = 1.0f;
 	}
+	
+	
 
 	public void update()
 	{

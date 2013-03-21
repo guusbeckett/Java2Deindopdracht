@@ -118,13 +118,13 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		g.setColor(Color.green);
-		g.drawString(fpsCounter.tellFPS(), 1, 10);
-		g.drawString("Het aantal paricles is: "+particleCount,1, 30);
 		for(Particle k : particles)
 		{
 			k.draw(g);
 		}
+		g.setColor(Color.green);
+		g.drawString(fpsCounter.tellFPS(), 1, 10);
+		g.drawString("Het aantal paricles is: "+particleCount,1, 24);
 	}
 	
 
@@ -143,14 +143,17 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
-		if(e.getButton() == 3)drukMuis = true;
+		//LMB for emitter RMB for comet
+		if(e.getButton()==1);
+		if(e.getButton()==3);
+		drukMuis=true;
 		 x = e.getX();
 		 y = e.getY();
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		//only stops emitting when RMB is released
 		if(e.getButton() == 3)drukMuis = false;
 	}
 
