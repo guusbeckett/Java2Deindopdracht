@@ -43,6 +43,7 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 	private int particleCount;
 //	private javax.swing.JDialog error;
 	private FPScounter fpsCounter;
+	private boolean kleur;
 	
 
 	
@@ -67,8 +68,8 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(drukMuis) {					 
-				particles.add(new Particle(x,y));
-				particles.add(new Particle(x,y));
+				particles.add(new Particle(x,y,kleur));
+				particles.add(new Particle(x,y,kleur));
 				particleCount+=2;
 				}
 				fpsCounter.tick();
@@ -118,6 +119,9 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+//		g.setColor(Color.green);
+//		g.drawString(fpsCounter.tellFPS(), 1, 10);
+//		g.drawString("Het aantal paricles is: "+particleCount,1, 20);
 		for(Particle k : particles)
 		{
 			k.draw(g);
@@ -143,9 +147,9 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		//LMB for emitter RMB for comet
-		if(e.getButton()==1);
-		if(e.getButton()==3);
+		
+		if(e.getButton()==1)kleur=true;
+		if(e.getButton()==3)kleur=false;
 		drukMuis=true;
 		 x = e.getX();
 		 y = e.getY();
@@ -153,7 +157,7 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		//only stops emitting when RMB is released
+		if(e.getButton() == 1)drukMuis = false;
 		if(e.getButton() == 3)drukMuis = false;
 	}
 

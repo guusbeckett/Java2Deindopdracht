@@ -12,11 +12,8 @@ public class Particle
 	private double xR;
 	private double yR;
 
-	@SuppressWarnings("unused")
 	private float red;
-	@SuppressWarnings("unused")
 	private float green;
-	@SuppressWarnings("unused")
 	private float blue;
 	public float alpha;
 	
@@ -33,7 +30,7 @@ public class Particle
 		alpha = 1.0f;
 	}
 	
-	public Particle(int x2, int y2) {
+	public Particle(int x2, int y2, boolean colour) {
 		this.x = x2;
 		this.y = y2;
 		int min = 1;
@@ -44,12 +41,12 @@ public class Particle
 		//Gives a random direction to the particle
 		xR = (Math.random() * (max - min) + min);
 		yR = (Math.random() * (max - min) + min);
-//		if(colour) red=(float)Math.random();
-		red=1;
-//		if(colour)green=(float)Math.random();
-		green=1;
-//		if(colour)blue=(float)Math.random();
-		blue=1;
+		if(colour) red=(float)Math.random();
+		else red=1;
+		if(colour)green=(float)Math.random();
+		else green=1;
+		if(colour)blue=(float)Math.random();
+		else blue=1;
 		alpha = 1.0f;
 	}
 	
@@ -58,8 +55,8 @@ public class Particle
 	public void update()
 	{
 		//direction depends on the random number generator
-		if(xR<=2)x -= (speed * Math.cos((Math.PI/180)*angle))/55;
-		else x += (speed * Math.cos((Math.PI/180)*angle))/20;
+		if(xR<=2)x -= (speed * Math.cos((Math.PI/180)*angle))/27;
+		else x += (speed * Math.cos((Math.PI/180)*angle))/27;
 		if(yR<=2)y += (speed * Math.sin((Math.PI/180)*angle))/27;
 		else y -= (speed * Math.sin((Math.PI/180)*angle))/27;
 		t += 0.05;
@@ -73,8 +70,8 @@ public class Particle
 	{
 		Graphics2D g2 = (Graphics2D)g;
 		Ellipse2D.Double ellipse = new Ellipse2D.Double(x,y,40,40);
-		g2.setColor(new Color((float)1.0, (float)1.0, (float)1.0, alpha));
-//		g2.setColor(new Color((red, green, blue, alpha));
+//		g2.setColor(new Color((float)1.0, (float)1.0, (float)1.0, alpha));
+		g2.setColor(new Color(red, green, blue, alpha));
 		g2.fill(ellipse);
 		
 	}
