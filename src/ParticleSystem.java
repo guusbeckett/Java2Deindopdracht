@@ -147,8 +147,8 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
 		if(e.getButton()==1)kleur=true;
+		
 		if(e.getButton()==3)kleur=false;
 		drukMuis=true;
 		 x = e.getX();
