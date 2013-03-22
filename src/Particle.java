@@ -55,7 +55,7 @@ public class Particle
 	public void update()
 	{
 		//direction depends on the random number generator
-		if(xR<=2)x -= (speed * Math.cos((Math.PI/180)*angle))/27;
+		if(xR<=2)x -= (speed * Math.cos((Math.PI/180)*angle))/21;
 		else x += (speed * Math.cos((Math.PI/180)*angle))/27;
 		if(yR<=2)y += (speed * Math.sin((Math.PI/180)*angle))/27;
 		else y -= (speed * Math.sin((Math.PI/180)*angle))/27;

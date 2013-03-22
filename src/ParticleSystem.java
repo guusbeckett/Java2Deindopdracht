@@ -72,10 +72,10 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 				particles.add(new Particle(x,y,kleur));
 				particleCount+=2;
 				}
-				fpsCounter.tick();
+				fpsCounter.tick();	
 			}
 		}).start();
-
+		
 		
 		
 	}
