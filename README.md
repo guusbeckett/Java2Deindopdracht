@@ -1,4 +1,5 @@
-Java2Deindopdracht
-==================
+Java2D Eindopdracht
+====================
 
-Eindopcracht voor 2D Java jaar 1 TI Avans
+Eindopdracht voor 2D Java jaar 1 TI Avans
+Guus Beckett 2013 

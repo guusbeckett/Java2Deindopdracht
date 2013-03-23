@@ -3,15 +3,16 @@ public class FPScounter {
     private int currentFPS = 0;
     private int FPS = 0;
     private int max;
-    private int min = 800;
+    private int min = 60;
     private long start = 0;
 
     public void tick() {
         if(System.currentTimeMillis() - start >= 1000) {
-            FPS = currentFPS;
-            if(max<currentFPS)max=currentFPS;
-            if(min>currentFPS&&min!=0)min=currentFPS;
-            currentFPS = 0;
+//          if(max<currentFPS)max=currentFPS;
+        	FPS = currentFPS;
+        	if(max<FPS)max=FPS;
+        	if(min!=0&&min>FPS)min=FPS;
+        	currentFPS = 0;
             start = System.currentTimeMillis();
         }
         else currentFPS++;
