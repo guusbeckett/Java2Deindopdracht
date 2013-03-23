@@ -2,11 +2,15 @@ public class FPScounter {
 
     private int currentFPS = 0;
     private int FPS = 0;
+    private int max;
+    private int min = 800;
     private long start = 0;
 
     public void tick() {
         if(System.currentTimeMillis() - start >= 1000) {
             FPS = currentFPS;
+            if(max<currentFPS)max=currentFPS;
+            if(min>currentFPS&&min!=0)min=currentFPS;
             currentFPS = 0;
             start = System.currentTimeMillis();
         }
@@ -18,6 +22,16 @@ public class FPScounter {
     }
     
 	public String tellFPS(){
-    	return "fps: "+getFPS();  
+    	return "FPS: "+getFPS();  
+	}
+	
+	public String maxFPS(){
+		return "Max FPS:"+max;
+		
+	}
+	
+	public String minFPS(){
+		return "Mix FPS:"+min;
+		
 	}
 }

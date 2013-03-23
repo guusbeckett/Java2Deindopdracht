@@ -1,12 +1,10 @@
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
-
+import java.awt.geom.Rectangle2D;
 
 public class Particle 
 {
 	public double x,y;
-	@SuppressWarnings("unused")
-	private double t = 0;
 	private double speed;
 	private double angle;
 	private double xR;
@@ -15,6 +13,7 @@ public class Particle
 	private float red;
 	private float green;
 	private float blue;
+	private boolean toggle;
 	public float alpha;
 	
 	
@@ -30,7 +29,7 @@ public class Particle
 		alpha = 1.0f;
 	}
 	
-	public Particle(int x2, int y2, boolean colour) {
+	public Particle(int x2, int y2, boolean colour, boolean normal) {
 		this.x = x2;
 		this.y = y2;
 		int min = 1;
@@ -48,33 +47,40 @@ public class Particle
 		if(colour)blue=(float)Math.random();
 		else blue=1;
 		alpha = 1.0f;
+		toggle = normal;
 	}
 	
 	
-
 	public void update()
 	{
 		//direction depends on the random number generator
-		if(xR<=2)x -= (speed * Math.cos((Math.PI/180)*angle))/21;
-		else x += (speed * Math.cos((Math.PI/180)*angle))/27;
-		if(yR<=2)y += (speed * Math.sin((Math.PI/180)*angle))/27;
-		else y -= (speed * Math.sin((Math.PI/180)*angle))/27;
-		t += 0.05;
+		if(xR<=2)x -= (speed * Math.cos((3.14/180)*angle))/21;
+		else x += (speed * Math.cos((3.14/180)*angle))/27;
+		if(yR<=2)y += (speed * Math.sin((3.14/180)*angle))/27;
+		else y -= (speed * Math.sin((3.14/180)*angle))/27;
 		alpha -= 0.01f;
 		alpha = Math.max(0,alpha);
 	}
 	
-
 	
 	public void draw(Graphics g)
 	{
 		Graphics2D g2 = (Graphics2D)g;
-		Ellipse2D.Double ellipse = new Ellipse2D.Double(x,y,40,40);
-//		g2.setColor(new Color((float)1.0, (float)1.0, (float)1.0, alpha));
-		g2.setColor(new Color(red, green, blue, alpha));
-		g2.fill(ellipse);
+		if(toggle){
+			Ellipse2D.Double ellipse = new Ellipse2D.Double(x,y,35,35);
+			g2.setColor(new Color(red, green, blue, alpha));
+			g2.fill(ellipse);
+//			int xS=(int)x;
+//			int yS=(int)y;
+//			g2.drawString("LOL!", xS, yS);
+			}
+		else{
+			Rectangle2D.Double ellipse = new Rectangle2D.Double(x,y,10,10);
+			g2.setColor(new Color(red, green, blue, alpha));
+			g2.fill(ellipse);
+			}
+		
 		
 	}
-	
 	
 }
