@@ -125,8 +125,7 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 		g.setColor(Color.green);
 		g.drawString(fpsCounter.tellFPS(), 1, 10);
 		g.drawString(fpsCounter.maxFPS(),1, 24);
-		g.drawString(fpsCounter.minFPS(),1, 38);
-		g.drawString("Het aantal paricles is: "+particleCount,1, 52);
+		g.drawString("Het aantal paricles is: "+particleCount,1, 38);
 		
 		fpsCounter.tick();
 	}
