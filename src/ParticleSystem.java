@@ -1,9 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.MouseInfo;
-import java.awt.Point;
-import java.awt.PointerInfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -66,12 +63,16 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 		{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(drukMuis) {					 
-				particles.add(new Particle(x,y,kleur, normaal));
-				particles.add(new Particle(x,y,kleur, normaal));
-				particles.add(new Particle(x,y,kleur, normaal));
-				particles.add(new Particle(x,y,kleur, normaal));
-				particleCount+=2;
+				if(drukMuis) {
+					//perBurst=0;
+					//while(perBurst<4){		
+				particles.add(new Particle(x-15,y-12,kleur, normaal));
+				particles.add(new Particle(x-15,y-12,kleur, normaal));
+				particles.add(new Particle(x-15,y-12,kleur, normaal));
+				particles.add(new Particle(x-15,y-12,kleur, normaal));
+				particleCount+=4;
+				//perBurst++;
+				//} 
 				}
 				
 			}
@@ -84,35 +85,20 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 		
 		for( Iterator<Particle> itr = particles.iterator(); itr.hasNext(); )
 		{
-			Particle k = itr.next();
+			Particle pete = itr.next();
 
-			if(particleCount > 748)
+			if(pete.dead() || pete.getX()+35<0 || pete.getY()+35<0)
 			{
 				itr.remove();
 				particleCount-=1;
+//				System.out.println("Kill!");
 			}
 			else
 			{
-				k.update();
+				pete.update();
 			}
 		}
 		repaint();
-	}
-	
-	public int muisX()
-	{
-		PointerInfo piepMuis = MouseInfo.getPointerInfo();
-		Point puntMuis = piepMuis.getLocation();
-		int muisX = (int) puntMuis.getX();
-		return muisX;
-	}
-	
-	public int muisY()
-	{
-		PointerInfo piepMuis = MouseInfo.getPointerInfo();
-		Point puntMuis = piepMuis.getLocation();
-		int muisY = (int) puntMuis.getY();
-		return muisY;
 	}
 	
 	public void paintComponent(Graphics g)

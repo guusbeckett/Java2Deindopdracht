@@ -4,12 +4,13 @@ import java.awt.geom.Rectangle2D;
 
 public class Particle 
 {
+	//movement
 	public double x,y;
 	private double speed;
 	private double angle;
 	private double xR;
 	private double yR;
-
+	//Appearance
 	private float red;
 	private float green;
 	private float blue;
@@ -82,5 +83,23 @@ public class Particle
 		
 		
 	}
+	
+	
+	public boolean dead()
+	{
+		if((float) alpha > 0)return false;
+		else return true;
+	}
+	
+	public int getX()
+	{
+		return (int) x;
+	}
+	
+	public int getY()
+	{
+		return (int) y;
+	}
+	
 	
 }
