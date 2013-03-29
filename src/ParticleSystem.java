@@ -64,15 +64,11 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(drukMuis) {
-					//perBurst=0;
-					//while(perBurst<4){		
 				particles.add(new Particle(x-15,y-12,kleur, normaal));
 				particles.add(new Particle(x-15,y-12,kleur, normaal));
 				particles.add(new Particle(x-15,y-12,kleur, normaal));
 				particles.add(new Particle(x-15,y-12,kleur, normaal));
 				particleCount+=4;
-				//perBurst++;
-				//} 
 				}
 				
 			}
