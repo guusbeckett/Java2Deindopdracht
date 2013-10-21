@@ -9,6 +9,7 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -34,8 +35,8 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 	
 	private static final long serialVersionUID = -8271945508104460591L;
 	private int x=0,y=0;
-	private List<Particle> particles = new ArrayList<Particle>();
-	private boolean drukMuis = false; 
+	private CopyOnWriteArrayList<Particle> particles = new CopyOnWriteArrayList<Particle>();
+	private boolean drukMuis; 
 	private int particleCount;
 	private FPScounter fpsCounter;
 	private boolean kleur;
@@ -78,6 +79,8 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 
 	public void actionPerformed(ActionEvent arg0)
 	{
+		synchronized (particles) {
+		ArrayList<Particle> tempArrayList = new ArrayList<Particle>();	
 		
 		for( Iterator<Particle> itr = particles.iterator(); itr.hasNext(); )
 		{
@@ -85,14 +88,20 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 
 			if(pete.dead() || pete.getX()+35<0 || pete.getY()+35<0)
 			{
-				itr.remove();
-				particleCount-=1;
+				tempArrayList.add(pete);
+//				particleCount-=1;
 //				System.out.println("Kill!");
 			}
 			else
 			{
 				pete.update();
 			}
+			if(tempArrayList.size() >= 100) {
+				particleCount-=tempArrayList.size();
+				particles.removeAll(tempArrayList);
+				tempArrayList.clear();
+			}
+		}
 		}
 		repaint();
 	}
@@ -100,10 +109,13 @@ class ParticleSystemPanel extends JPanel implements ActionListener, MouseListene
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		for(Particle k : particles)
+		synchronized (particles) {
+		for(Particle p : particles)
 		{
-			k.draw(g);
+			p.draw(g);
+		}	
 		}
+		
 		g.setColor(Color.green);
 		g.drawString(fpsCounter.tellFPS(), 1, 10);
 		g.drawString(fpsCounter.maxFPS(),1, 24);

@@ -71,17 +71,12 @@ public class Particle
 			Ellipse2D.Double ellipse = new Ellipse2D.Double(x,y,35,35);
 			g2.setColor(new Color(red, green, blue, alpha));
 			g2.fill(ellipse);
-//			int xS=(int)x;
-//			int yS=(int)y;
-//			g2.drawString("LOL!", xS, yS);
 			}
 		else{
 			Rectangle2D.Double ellipse = new Rectangle2D.Double(x,y,10,10);
 			g2.setColor(new Color(red, green, blue, alpha));
 			g2.fill(ellipse);
 			}
-		
-		
 	}
 	
 	
